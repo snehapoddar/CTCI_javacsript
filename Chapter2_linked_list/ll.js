@@ -5,6 +5,11 @@ function ListNode(val) {
     this.next = null;
 }
 
+exports.newNode = function() {
+    let node = new ListNode();
+    return node;
+}
+
 // function to create linkedlist from array of nums
 exports.arrayToLL = function(arr) {
     if(arr.length<1) return null;
@@ -18,6 +23,19 @@ exports.arrayToLL = function(arr) {
     return head;
 }
 
+exports.insertNodeAtLast = function(head, value){
+    const newNode = new ListNode(value);
+    if(!head) {
+        head = newNode;
+        return head;
+    }
+    let cur = head;
+    while(cur.next){
+        cur = cur.next;
+    }
+    cur.next = newNode;
+    return head;
+}
 // function to print linkedlist
 exports.printLL = function(head) {
     cur = head;
@@ -40,4 +58,28 @@ exports.deleteNode = function (head, nodeValue) {
         cur = cur.next;
     }
     return head;
+}
+
+exports.reversell = function(head) {
+    if(!head || !head.next) return head;
+    let newHead = null;
+    let cur = head;
+    let next = null
+    while(cur) {
+        next = cur.next;
+        cur.next = newHead;
+        newHead = cur;
+        cur = next;
+    }
+    return newHead;
+}
+
+exports.llToArray = function (head) {
+    let array = [];
+    let cur = head;
+    while(cur){
+        array.push(cur.val);
+        cur = cur.next;
+    }
+    return array;
 }
