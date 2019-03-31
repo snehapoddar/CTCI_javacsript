@@ -1,7 +1,7 @@
 class MinStack {
     constructor() {
         this.stack = [];
-        this.mins = [];
+        this.mins = []; 
         this.minNum = Number.POSITIVE_INFINITY;
     }
 
